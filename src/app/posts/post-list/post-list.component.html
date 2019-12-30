@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>Post List component</title>
+  </head>
+  <body>
+<div *ngIf='posts.length > 0'>
+<div *ngFor= 'let post of posts'>
+  <p>{{post.title}}</p>
+  <p>{{post.content}}</p>
+</div>
+</div>
+<div *ngIf='posts.length == 0'>
+  <p>No Posts</p>
+</div>
+</body>
+</html>

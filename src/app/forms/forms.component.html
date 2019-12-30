@@ -1,0 +1,409 @@
+
+<div class='formOuterDiv'>
+  <h3 class='weatherSearchForm' id='Weather_Search'>Weather Search</h3>
+  <br><br>
+  <div class='formInside'>
+    <div class="form-group mb-2"  id='streetLabel'>
+      <label for="staticEmail2" class="sr-only">Street</label>
+      <input type="text" readonly class="form-control-plaintext" id="street" value="Street" style='color: whitesmoke;'>
+      <p class='redStar'> *</p>
+
+    </div>
+    <div class="form-group mx-sm-3 mb-2" id='streetValOuter'>
+      <label for="streetVal" class="sr-only">StreetVal</label>
+      <input type="text" class="form-control" id="streetVal" (focusout)='validateStreet($event)' placeholder="Enter Street Name" #street>
+    </div>
+    <div id='streetError'>
+      <p style="color: red; margin-bottom: 0px;">Please enter the street</p>
+    </div>
+    <br>
+
+    <div id='cityDiv'>
+      <p id='cityLabel'>City</p>
+      <p id='redStarCity'> *</p>
+    </div>
+
+      <div class="form-group mx-sm-3 mb-2" id='cityValOuter'>
+        <label for="cityVal" class="sr-only">City</label>
+        <input type="text" class="form-control" (focusout)='validateCity($event)' (input)="changedContent($event)" [matAutocomplete] = "auto" matInput id="cityVal" placeholder="Enter City Name" #city>
+
+
+        <mat-autocomplete #auto = "matAutocomplete">
+            <mat-option *ngFor = "let state of autoSuggestions" [value] = "state">
+               {{state}}
+            </mat-option>
+         </mat-autocomplete>
+
+
+      </div>
+
+      <div id='cityError'>
+          <p style="color: red; margin-bottom: 0px;">Please enter the City</p>
+        </div> <br>
+        <div id='stateOuter'>
+      <div class="form-group mb-2" id='stateLable'>
+          <label for="state" class="sr-only">State</label>
+          <input type="text" readonly class="form-control-plaintext" id="state" value="State" style='color: whitesmoke;'>
+          <p id='redStarId'> *</p>
+
+      </div>
+      <div class="form-group mx-sm-3 mb-2" id='stateValOuter'>
+          <select class="form-control" #state id='stateVal' (change) = 'searchEnable()'>
+              <option value="state">State</option>
+              <option disabled='disabled'>---------------------------------------</option>
+              <option value="AL">Alabama</option>
+	<option value="AK">Alaska</option>
+	<option value="AZ">Arizona</option>
+	<option value="AR">Arkansas</option>
+	<option value="CA">California</option>
+	<option value="CO">Colorado</option>
+	<option value="CT">Connecticut</option>
+	<option value="DE">Delaware</option>
+	<option value="DC">District Of Columbia</option>
+	<option value="FL">Florida</option>
+	<option value="GA">Georgia</option>
+	<option value="HI">Hawaii</option>
+	<option value="ID">Idaho</option>
+	<option value="IL">Illinois</option>
+	<option value="IN">Indiana</option>
+	<option value="IA">Iowa</option>
+	<option value="KS">Kansas</option>
+	<option value="KY">Kentucky</option>
+	<option value="LA">Louisiana</option>
+	<option value="ME">Maine</option>
+	<option value="MD">Maryland</option>
+	<option value="MA">Massachusetts</option>
+	<option value="MI">Michigan</option>
+	<option value="MN">Minnesota</option>
+	<option value="MS">Mississippi</option>
+	<option value="MO">Missouri</option>
+	<option value="MT">Montana</option>
+	<option value="NE">Nebraska</option>
+	<option value="NV">Nevada</option>
+	<option value="NH">New Hampshire</option>
+	<option value="NJ">New Jersey</option>
+	<option value="NM">New Mexico</option>
+	<option value="NY">New York</option>
+	<option value="NC">North Carolina</option>
+	<option value="ND">North Dakota</option>
+	<option value="OH">Ohio</option>
+	<option value="OK">Oklahoma</option>
+	<option value="OR">Oregon</option>
+	<option value="PA">Pennsylvania</option>
+	<option value="RI">Rhode Island</option>
+	<option value="SC">South Carolina</option>
+	<option value="SD">South Dakota</option>
+	<option value="TN">Tennessee</option>
+	<option value="TX">Texas</option>
+	<option value="UT">Utah</option>
+	<option value="VT">Vermont</option>
+	<option value="VA">Virginia</option>
+	<option value="WA">Washington</option>
+	<option value="WV">West Virginia</option>
+	<option value="WI">Wisconsin</option>
+	<option value="WY">Wyoming</option>
+            </select>
+        </div>
+        </div>
+        <br>
+        <div class="form-check" id='checkBoxOuter'>
+            <input value='1' class="form-check-input" type="checkbox" value="" id="currentLoc" (click)='onCheck(state, street, city, $event)' #currentLoc>
+            <label class="form-check-label" for="currentLoc" style='width: 377%; color: whitesmoke;'>
+              Current Location
+            </label>
+          </div>
+          <div style='margin-bottom: 6%;'>
+          <button class="btn btn-primary" (click)='onSearch(currentLoc, state, street, city)' id='searchButton' disabled='true'><i class="fa fa-search"> Search</i></button>
+          <button class="btn" (click)="clearEverything()" style='margin-top: 2%; margin-left: 2%; background-color: whitesmoke; color: grey;'><i class="material-icons" style='float: left;'>
+            clear_all
+            </i>Clear</button>
+        </div>
+        </div>
+
+
+
+</div>
+<div id='resultOuter'>
+    <button class="btn btn-primary" id='resultsButton' (click)='resultsClick()'>Results</button>
+          <button class="btn" (click)='favoritesClick()' id='favoritesButton' style='margin-top: 2%; margin-left: 2%; background-color: whitesmoke; color: grey; border: solid 1px black;'>Favorites</button>
+
+  </div>
+  <div id="myProgress">
+    <div id="myBar" class='progress-bar progress-bar-striped active' role='progressbar'></div>
+  </div>
+
+  <div id='helloWorld'>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="nav nav-tabs mr-auto">
+          <li class="nav-item">
+            <a href="#homeTab" data-toggle="tab" class="nav-link active" id='homeLink'>Currently</a>
+          </li>
+          <li class="nav-item">
+            <a href="#tab1Tab" data-toggle="tab" class="nav-link">Hourly</a>
+          </li>
+          <li class="nav-item">
+            <a href="#tab2Tab" data-toggle="tab" class="nav-link">Weekly</a>
+          </li>
+        </ul>
+        <div id='twitterImg'>
+            <a class="twitter-share-button"
+            href={{twitterURL}}><img src="https://csci571.com/hw/hw8/Images/Twitter.png" height=35 width=49/></a>
+          </div>
+          <div id='favoriteImg'>
+            <button (click)='onFavorite()' id='favoriteButton'>
+              <i class="material-icons" >
+                  star_border
+                  </i> </button>
+            </div>
+      </nav>
+        <div class="tab-content" id='output1Content'>
+          <div id="homeTab" class="tab-pane">
+            <div id = 'opBox'>
+              <div id='mergeTable'>
+              <div id='outerOutput'>
+              <h3 id="cityInTable"> Los Angeles</h3>
+              <h3 id='region'> America / Los Angeles </h3>
+              <div style='padding-left: 7%; padding-top: 3%;'>
+              <h3 id = 'temperature' style='float: left;'> 75</h3><img style='height: 8px; float: left;' src='https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_shape_oval-512.png' class='Fimage'> <h3 id='fSym'>F</h3>
+              </div>
+              <h5 id = 'weather' style='padding-left: 7%; padding-top: 3%;'> Clear </h5>
+            </div>
+            <div id='stateSealDiv'>
+              <p id='stateseal'>
+
+              </p>
+            </div>
+            <div id='tableOuter'>
+
+
+              <table id='humidityTable' cellspacing='10' id='humidityTable'>
+                <thead>
+                  <tr>
+                    <th id='humidity'>
+
+                    </th>
+                  </tr>
+                </thead>
+                  <tbody>
+                      <tr>
+                        <td>
+                          <p id = 'humidityVal'> </p>
+                        </td>
+                        </tr>
+                       </tbody>
+                      </table>
+
+
+
+                     <table class='otherTables' id='pressureTable'>
+                       <thead>
+                         <tr>
+                    <th id='pressure'>
+
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                      <td>
+                          <p id='pressureVal'> </p>
+                        </td>
+                  </tr>
+                  </tbody>
+                     </table>
+
+
+                    <table class='otherTables' id='windTable'>
+                      <thead>
+                        <tr>
+
+                    <th id='windSpeed'>
+
+                    </th>
+                  </tr>
+                </thead>
+                  <tbody>
+                    <tr>
+                        <td >
+                            <p id='windSpeedVal'> </p>
+                          </td>
+                        </tr>
+                          </tbody>
+                        </table>
+
+
+                        <table class='otherTables' id='visibilityTable'>
+                          <thead>
+                            <tr>
+                    <th id='visibility'>
+
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                          <p id='visibilityVal'> </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                    </table>
+
+                    <table class='otherTables' id='cloudTable'>
+                        <thead>
+                          <tr>
+                    <th id='cloudCover'>
+
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                  <td>
+                      <p id='cloudCoverVal'> </p>
+                    </td>
+                    </tr>
+                  </tbody>
+                  </table>
+
+
+                  <table class='otherTables' id='ozonTable'>
+                    <thead>
+                      <tr>
+                    <th id='ozone'>
+
+                    </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                          <td>
+                              <p id='ozoneVal'> </p>
+                            </td>
+                        </tr>
+                        </tbody>
+                        </table>
+
+                              </div>
+                              </div>
+            </div>
+          </div>
+          <div id="tab1Tab" class="tab-pane">
+
+              <div class="form-group mx-sm-3 mb-2" style='width: 70%; margin-top: 1%;'>
+                  <select class="form-control" style='width: 36%;' (change)='secondProgress(checkedBar)' id='selectBar' #checkedBar>
+                      <option value="temp">Temperature</option>
+                      <option value="pres">Pressure</option>
+                      <option value="humi">Humidity</option>
+                      <option value="ozon">Ozone</option>
+                      <option value="visi">Visibility</option>
+                      <option value="wind">Wind Speed</option>
+                    </select>
+                </div>
+
+
+            <div style='display: block;' id='canvasOp'>
+              <canvas baseChart id = 'canvasBase'
+                [datasets]="barChartData"
+                [labels] = "barChartLabels"
+                [options]= "barChartOptions"
+                [legend]= "barChartLegend"
+                [chartType]= "barChartType">
+
+              </canvas>
+
+            </div>
+          </div>
+          <div id="tab2Tab" class="tab-pane">
+            <figure class="highcharts-figure">
+              <div id="container"></div>
+          </figure>
+          </div>
+        </div>
+      </div>
+
+      <div>
+      <ng-template #content let-modal id='popUp'>
+          <div class="modal-header" id='modelHeader'>
+            <h4 class="modal-title" id="modal-basic-title">{{contentHeader}}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id='modelBody'>
+
+
+            <div id='borderBottom'>
+            <div style='float: left;'>
+            <h3>{{contentCity}}</h3>
+            <h1 style='float: left;'>{{contentTemp}}</h1><img src='https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_shape_oval-512.png' alt='degree' id='degreeImage' /><h1>F</h1>
+            <p>{{contentSummary}}</p> <br>
+          </div>
+          <div>
+            <br><br>
+            <img src = {{contentImageURL}} alt = 'content icon' id='iconImage' />
+          </div>
+          </div>
+          <div id='footerData'>
+              <div>
+            <p class='footerContent'>Precipitation : {{contentPrecip}}</p>
+            <p class='footerContent'>Chance of Rain : {{contentChanceOfRain}} %</p>
+            <p class='footerContent'>Wind Speed : {{contentWindSpeed}} mph</p>
+            <p class='footerContent'>Humidity : {{contentHumidity}} %</p>
+            <p class='footerContent'>Visibility : {{contentVisibility}} miles</p>
+          </div>
+          </div>
+
+
+        </div>
+        </ng-template>
+      </div>
+
+        <div id='favoriteDiv' style="display: none;">
+            <ng-container *ngIf='favorite.length > 0'>
+            <table class="table table-striped table-primary" style='margin-top: 8%;'>
+                <thead>
+                  <tr style='background-color: steelblue;'>
+                    <th scope="col">#</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">City</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Wish List</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor= 'let each of favorite; let i = index'>
+                    <ng-container *ngIf='favorite.length > 0'>
+
+                            <tr style='background-color: lightskyblue; text-align: left;' *ngIf='i%2 == 0 && favorite.length > 0'>
+                                <th scope="row">{{i+1}}</th>
+                                <td><img src={{each.seal}} height=30 width=40/></td>
+                                <td><a href='#favoriteDiv' (click)='retrieveFavorite($event)' name='{{each.setKey}}'>{{each.city}}</a></td>
+                                <td>{{each.state}}</td>
+                                <td><button style='background-color: whitesmoke;' name={{each.setKey}} (click)='deleteWish($event)'><i class="material-icons {{each.setKey}}" style='color: sandybrown;'>
+                                    delete
+                                    </i></button></td>
+                              </tr>
+                      <tr style='background-color: steelblue; text-align: left;' *ngIf='i%2 != 0 && favorite.length > 0'>
+                        <th scope="row">{{i+1}}</th>
+                        <td><img src={{each.seal}} height=30 width=40/></td>
+                        <td><a href='#favoriteDiv' (click)='retrieveFavorite($event)' name='{{each.setKey}}'>{{each.city}}</a></td>
+                        <td>{{each.state}}</td>
+                        <td><button style='background-color: whitesmoke; text-align: center;' name={{each.setKey}} (click)='deleteWish($event)'><i class="material-icons {{each.setKey}}" style='color: sandybrown;'>
+                            delete
+                            </i> </button></td>
+                      </tr>
+                  </ng-container>
+
+        </tbody>
+      </table>
+            </ng-container>
+          <div *ngIf='favorite.length == 0'>
+              <div id='noPost'>
+                  No Posts
+                </div>
+          </div>
+          </div>
+
+          <div id='invalidAddress'>
+            Invalid Address
+          </div>

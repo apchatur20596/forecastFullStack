@@ -1,0 +1,535 @@
+.formOuterDiv {
+  background-color: lightslategray;
+  margin-left: 14%;
+  width: 72%;
+  border: 1px solid black;
+  border-radius: 1%;
+  margin-top: 9%;
+}
+.weatherSearchForm {
+text-align: center;
+padding-top: 6%;
+font-size: xx-large;
+color: whitesmoke;
+font-weight: bolder;
+}
+.modal-content {
+  width: 23%;
+}
+.outerForm {
+  padding-top: 4%;
+  padding-left: 8%;
+}
+#myProgress {
+  width: 100%;
+  background-color: #fff;
+}
+
+#myBar {
+  width: 0%;
+  height: 15px;
+  background-color: lightseagreen;
+}
+#helloWorld {
+  display: none;
+}
+
+.pac-icon {
+  width: 0;
+  background-image: none;
+}
+#opBox {
+  height: 30%;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 1px;
+}
+
+.highcharts-figure, .highcharts-data-table table {
+  min-width: 320px;
+  max-width: 800px;
+  margin: 1em auto;
+}
+
+#container {
+  height: 400px;
+}
+
+.highcharts-data-table table {
+font-family: Verdana, sans-serif;
+border-collapse: collapse;
+border: 1px solid #EBEBEB;
+margin: 10px auto;
+text-align: center;
+width: 100%;
+max-width: 500px;
+}
+.highcharts-data-table caption {
+  padding: 1em 0;
+  font-size: 1.2em;
+  color: #555;
+}
+.highcharts-data-table th {
+font-weight: 600;
+  padding: 0.5em;
+}
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+  padding: 0.5em;
+}
+.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+  background: #f8f8f8;
+}
+.highcharts-data-table tr:hover {
+  background: #f1f7ff;
+}
+.formInside {
+  width: auto;
+}
+
+
+.stateSealImage {
+  height: 100px;
+  width: 100px;
+}
+
+.chart-wrapper {
+  float: left;
+  padding-bottom: 40%;
+  position: relative;
+  width: 80%;
+}
+
+.table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {
+	background-color: blue;
+}
+#stateOuter {
+  margin-top: 1%; margin-left: 11%; width: 100%; margin-right: 5%; float: left;
+}
+#invalidAddress {
+  margin-left: 14%;
+  background-color: blanchedalmond;
+  padding-top: 0.5%;
+  padding-left: 1%;
+  padding-bottom: 0.5%;
+  width: 71%;
+  color: peru;
+  display: none;
+}
+#noPost {
+  margin-left: 14%;
+  background-color: blanchedalmond;
+  padding-top: 0.5%;
+  padding-left: 1%;
+  padding-bottom: 0.5%;
+  width: 71%;
+  color: peru;
+}
+
+@media only screen and (min-width: 200px) {
+  #test10 {
+    background-color: red;
+  }
+  .formOuterDiv {
+    background-color: steelblue;
+    width:  100%;
+    margin-left: 0%;
+    border: 1px solid black;
+    border-radius: 1%;
+    margin-top: 0%;
+    box-shadow: 7px 7px grey;
+
+  }
+  #noPost {
+    margin-top: 8%; margin-left: 0%; width: 100%;
+  }
+  #stateOuter {
+    margin-top: 0%; margin-left: 0%; width: 100%; margin-right: 0%; float: left;
+  }
+  #streetVal {
+    width: 100%;
+  }
+  #cityVal {
+    width: 100%;
+  }
+  #stateVal {
+    width: 100%;
+  }
+  #streetLabel {
+    float: left; margin-left: 3%; width: 22%; margin-right: 5%;
+  }
+  #cityLabel {
+    float: left; margin-left: 3%; width: 8%; color: whitesmoke;
+  }
+  #stateOuter {
+    margin-top: 1%; float: left; margin-left: 2%;
+  }
+  #stateValOuter {
+    width: 94%; margin-top: 1%; float: left;
+    margin-left: 1%;
+  }
+  #streetValOuter {
+   color: whitesmoke;
+   margin-left: 3%;
+   width: 94%;
+  }
+  #cityValOuter {
+    margin-left: 3%;
+    width: 94%;
+    color: whitesmoke;
+    margin-top: 1%;
+  }
+  #checkBoxOuter {
+   margin-left: 3%; margin-top: 5%;
+  }
+  #searchButton {
+    margin-top: 2%; margin-left: 5%; background-color: whitesmoke; color: grey;
+  }
+  #resultsButton {
+    margin-top: 2%; margin-left: 19%; background-color: steelblue; color: white; border: solid 1px black;
+  }
+  #resultOuter {
+    margin-left: 5%;
+    margin-top: 5%;
+  }
+  #homeTab {
+    height: 80%;
+    width: 94%;
+    background-color: lightskyblue;
+    margin-left: 4%;
+    margin-top: 10%;
+  }
+  #outerOutput {
+    float: left; width: 50%;
+  }
+  #cityInTable {
+    padding-top: 7%;
+    padding-left: 7%;
+    font-size: 17px;
+  }
+  #region {
+    padding-left: 7%;
+    font-size: 17px;
+  }
+  #temperature {
+    font-size: 17px;
+  }
+  #fSym {
+    font-size: 17px;
+  }
+  #weather {
+    font-size: 17px;
+  }
+  .Fimage {
+    height: 5px;
+  }
+  #stateSealDiv {
+    float: left; margin-left: 0%; margin-top: 10%; width: 50%;
+  }
+  #stateSealImage {
+    height: 100px;
+    width: 100px;
+  }
+  #humidityTable {
+    margin-right: 4%; margin-left: 3%; float: left; background-color: lightskyblue;
+  }
+  .otherTables {
+    margin-right: 4%; float: left; background-color: lightskyblue;
+  }
+  .tableImage {
+    height : 35px; width : 35px;
+  }
+  #tableOuter {
+    padding-top: 71%;
+  }
+  #mergeTable {
+    height: 377px;
+  }
+  canvas{
+
+    width:90% !important;
+    height:90% !important;
+    margin-left: 5%;
+
+  }
+  #popUp {
+    width: 28%;
+  }
+  #Weather_Search {
+    margin-bottom: 0px;
+  }
+  #street {
+    float: left;
+    width: 50%;
+  }
+  .redStar {
+    float: left;
+    color: red;
+    margin-top: 2%;
+  }
+  #state {
+    width: 10%;
+    float: left;
+    margin-left: 2%;
+  }
+  #redStarId {
+    float: left;
+    color: red;
+    margin-top: 0%;
+  }
+  #redStarCity {
+    float: left;
+    color: red;
+    margin-top: 0%;
+  }
+  #stateLable {
+    margin-top: -4%;
+  }
+  #myProgress {
+    width: 90%; margin-left: 5%; margin-top: 3%;
+  }
+  #streetError {
+    margin-left: 4%; display: none;
+  }
+  #cityError {
+    margin-left: 4%; display: none;
+  }
+  ::ng-deep .my-class .modal-dialog {
+    max-width: 27%;
+    width: 27%;
+  }
+  #borderBottom {
+    padding-bottom: 14%;
+    border-bottom: 1px solid lightskyblue;
+    margin: 7%;
+  }
+
+  #footerData {
+    width: 60%;
+  }
+  .footerContent {
+    margin-bottom: 0%;
+  }
+}
+
+
+
+
+
+
+
+@media only screen and (min-width: 600px) {
+  #test10 {
+    background-color: green;
+  }
+  #noPost {
+    margin-top: 1%; margin-left: 14%; width: 72%;
+  }
+
+  .formOuterDiv {
+    background-color: steelblue;
+    margin-left: 14%;
+    width: 72%;
+    border: 1px solid black;
+    border-radius: 1%;
+    margin-top: 2 %;
+    box-shadow: 7px 7px grey;
+  }
+  #favoriteDiv {
+    font-style: none;
+    font-weight: bold;
+    color: royalblue;
+  }
+  #streetVal {
+    width: 60%;
+  }
+  #cityVal {
+    width: 60%;
+  }
+  #stateVal {
+    width: 36%; margin-left: -2%;
+  }
+  #streetLabel {
+    float: left; margin-left: 11%; width: 10%; margin-right: 5%;
+  }
+  #cityLabel {
+    float: left; margin-left: 11%; width: 10%; margin-right: 5%;
+  }
+  #stateOuter {
+    margin-top: 1%; float: left;
+    width: 100%;
+    margin-bottom: 2%;
+  }
+  #stateLable {
+    padding-left: 9%; width: 23%; margin-right: -12%; margin-top: 1%;
+  }
+  #stateValOuter {
+    width: 83%; margin-top: 0; float: left; padding-left: 12%;
+  }
+  #streetValOuter {
+    width: 70%; color: whitesmoke;
+  }
+  #cityValOuter {
+    width: 70%; color: whitesmoke;
+    margin-top: 1%; float: left;
+  }
+  #checkBoxOuter {
+    margin-right: 83%; margin-left: 11%; margin-top: 5%;
+  }
+  #searchButton {
+    margin-top: 2%; margin-left: 12%; background-color: whitesmoke; color: grey;
+  }
+  #resultOuter {
+    margin-left: 29%;
+    margin-bottom: 2%;
+  }
+  #resultsButton {
+    margin-top: 2%; margin-left: 12%; background-color: steelblue; color: white; border: solid 1px black;
+  }  canvas{
+
+    width:70% !important;
+    height:40% !important;
+    margin-left: 5%;
+
+  }
+  #homeTab {
+    height: 80%;
+    width: 41%;
+    background-color: lightskyblue;
+    margin-left: 25%;
+    margin-top: 10%;
+  }
+  #outerOutput {
+    float: left; margin-left: 8%; margin-top: 5%; width: 40%;
+  }
+  #cityInTable {
+    padding-top: 7%;
+    padding-left: 7%;
+  }
+  #region {
+    padding-left: 7%;
+  }
+  #stateSealDiv {
+    float: left; margin-top: 12%; padding-left: 21%;
+  }
+  #stateSealImage {
+    height: 200px;
+    width: 200px;
+  }
+  #humidityTable {
+    margin-right: 8%; margin-left: 8%; float: left; background-color: lightskyblue;
+  }
+  .otherTables {
+    margin-right: 8%; float: left; background-color: lightskyblue;
+  }
+  .tableImage {
+    height : 50px; width : 50px;
+  }
+  #tableOuter {
+    padding-top: 40%;
+  }
+  #mergeTable {
+    height: 413px;
+  }
+  canvas{
+
+    width:70% !important;
+    height:40% !important;
+    margin-left: 5%;
+    margin-top: 10%;
+
+  }
+  #cityDiv {
+    float: left;
+    padding-left: 11%;
+    margin-top: 1%;
+    margin-right: 10%;
+    color: white;
+    width: 15%;
+    margin-bottom: 2%;
+  }
+  #street {
+    float: left;
+    width: 34%;
+  }
+  .redStar {
+    float: left;
+    margin-top: 6%;
+    color: red;
+  }
+  #cityLabel {
+    width: 54%; float: left;
+  }
+  #state {
+    float: left;
+    width: 20%;
+  }
+  tbody {
+    text-align: center;
+  }
+  #output1Content {
+    float: left;
+    width: 100%;
+    margin-top: -7%;
+  }
+  #selectBar {
+    margin-top: 14%;
+  }
+  #canvasOp {
+    margin-top: -5%;
+  }
+  #tab2Tab {
+    margin-top: 13%;
+  }
+  #myProgress {
+    width: 70%; margin-left: 15%; margin-top: 3%;
+  }
+  #streetError {
+    margin-left: 26%; display: none;
+  }
+  #cityError {
+    margin-left: 26%; display: none;
+  }
+  #borderBottom {
+    padding-bottom: 7%;
+    border-bottom: 1px solid lightskyblue;
+    margin: 7%;
+  }
+  #footerData {
+    width: 45%;
+    float: right;
+  }
+}
+
+#modelHeader {
+  background-color: steelblue;
+}
+#modelBody {
+  background-color: lightskyblue;
+}
+#modelFooter {
+  background-color: lightskyblue;
+}
+#degreeImage {
+  height: 10px;
+  width: 10px;
+  float: left;
+}
+#iconImage {
+  height: 16%;
+  width: 16%;
+  margin-top: -4%;
+  margin-left: 29%;
+}
+
+
+#twitterImg {
+  margin-right: 1%;
+}
+#favoriteButton {
+  background-color: whitesmoke;
+  border: 0px;
+}
+#invalidAddress {
+  margin-top: 8%;
+}
